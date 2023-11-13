@@ -11,8 +11,8 @@ public class Task4 {
 
         int num;
         int count = 0;
-        String curSign;
-        String prevSign = "";
+        int curSign;
+        int prevSign = 0;
 
         System.out.print("Сколько сгеренировать чисел: ");
         int n = scanner.nextInt();
@@ -20,21 +20,20 @@ public class Task4 {
 
         for (int i = 1; i <= n; i++) {
             num = random.nextInt(2000) - 1000;
-            curSign = getSign(num);
-            if (curSign.equals(prevSign)) {
+            curSign = Integer.signum(num);
+            if (curSign == prevSign){
                 count++;
             } else {
                 if (count > max) max = count;
                 count = 1;
             }
-            System.out.printf("| %3d | %5d | %4s | %11d |%n", i, num, curSign, count);
+            System.out.printf("| %3d | %5d | %4s | %11d |%n", i, num, getSign(curSign), count);
             prevSign = curSign;
         }
         System.out.println("Самая длинная серия: " + max);
     }
 
     private static String getSign(int num) {
-        num = Integer.signum(num);
         if (num == 1) return "+";
         if (num == -1) return "-";
         return "0";
