@@ -6,18 +6,19 @@ public class Task1 {
 
     public static void main(String[] args) {
         StringBuilder builder = new StringBuilder();
-        builder.append("____________________________________\n");
-        builder.append("|    Число | flour | round | ceil  |\n");
-        builder.append("|----------------------------------|\n");
+        builder.append("____________________________________________\n");
+        builder.append("|    Число | flour | ceil  | round | rint  |\n");
+        builder.append("|------------------------------------------|\n");
         for (int i = 0; i < numbers.length; i++) {
-            builder.append("| %8s | %5.0f | %5d | %5.0f |\n".formatted(
+            builder.append("| %8s | %5.0f | %5.0f | %5d | %5.0f |\n".formatted(
                     numbersStrings[i],
                     Math.floor(numbers[i]),
+                    Math.ceil(numbers[i]),
                     Math.round(numbers[i]),
-                    Math.ceil(numbers[i]))
-            );
+                    Math.rint(numbers[i])
+            ));
         }
-        builder.append("|----------------------------------|\n");
+        builder.append("|------------------------------------------|\n");
 
         System.out.println(builder);
 
