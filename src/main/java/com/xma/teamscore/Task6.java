@@ -13,34 +13,20 @@ public class Task6 {
             long days = totalMinutes / 3600;
 
             System.out.printf("%d – это %s %s %s",
-                    totalMinutes, getDays(days), getHours(hours), getMinutes(minutes)
+                    totalMinutes,
+                    getFormattedTime(days, "день", "дня", "дней"),
+                    getFormattedTime(hours, "час", "часа", "часов"),
+                    getFormattedTime(minutes, "минута", "минуты", "минут")
             );
         }
-
     }
 
-    private static String getMinutes(long minutes) {
-        return switch ((int) (minutes % 10)) {
-            case 2, 3, 4 -> minutes + " минуты";
-            case 1 -> minutes + " минута";
-            default -> minutes + " минут";
-        };
-    }
-
-    private static String getHours(long hours) {
-        return switch ((int) (hours % 10)) {
-            case 2, 3, 4 -> hours + " часа";
-            case 1 -> hours + " час";
-            default -> hours + " часов";
-        };
-    }
-
-    private static String getDays(long days) {
-        return switch ((int) (days % 10)) {
-            case 2, 3, 4 -> days + " дня";
-            case 1 -> days + " день";
-            default -> days + " дней";
-        };
+    private static String getFormattedTime(long time, String oneFormat, String twoThreeFourFormat, String manyFormat) {
+        if (5 <= time && time <= 20) return time + " " + manyFormat;
+        long t = time % 10;
+        if (t == 1) return time + " " + oneFormat;
+        if (t == 2 || t == 3 || t == 4) return time + " " + twoThreeFourFormat;
+        return time + " " + manyFormat;
     }
 
     private static long getTime(String[] args) {
