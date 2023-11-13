@@ -8,7 +8,7 @@ public class Task3 {
         double max = Integer.MIN_VALUE;
         int count = 0;
         double sum = 0;
-        double average;
+        double average = 0;
         double num;
 
         System.out.println("Введите числа:");
@@ -21,13 +21,20 @@ public class Task3 {
                 if (num < min) min = num;
                 if (num > max) max = num;
             }
-        } catch (NumberFormatException e) {
-            average = sum / count;
+        } catch (NumberFormatException ignored) {
+        } finally {
+            if (count > 0) {
+                average = sum / count;
+            }
+            else {
+                max = min = Double.NaN;
+            }
+            System.out.println("Количество: " + count);
+            System.out.println("Минимальное: " + min);
+            System.out.println("Максимальное: " + max);
+            System.out.println("Сумма: " + sum);
+            System.out.println("Среднее: " + average);
         }
-        System.out.println("Количество: " + count);
-        System.out.println("Минимальное: " + min);
-        System.out.println("Максимальное: " + max);
-        System.out.println("Сумма: " + sum);
-        System.out.println("Среднее: " + average);
+
     }
 }
