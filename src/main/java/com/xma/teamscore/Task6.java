@@ -10,7 +10,7 @@ public class Task6 {
         } else {
             long minutes = totalMinutes % 60;
             long hours = (totalMinutes / 60) % 60;
-            long days = totalMinutes / 3600;
+            long days = totalMinutes / 1440;
 
             System.out.printf("%d – это %s %s %s",
                     totalMinutes,
@@ -22,8 +22,9 @@ public class Task6 {
     }
 
     private static String getFormattedTime(long time, String oneFormat, String twoThreeFourFormat, String manyFormat) {
-        if (5 <= time && time <= 20) return time + " " + manyFormat;
-        long t = time % 10;
+        long t = time % 100;
+        if (5 <= t && t <= 20) return time + " " + manyFormat;
+        t = time % 10;
         if (t == 1) return time + " " + oneFormat;
         if (t == 2 || t == 3 || t == 4) return time + " " + twoThreeFourFormat;
         return time + " " + manyFormat;
